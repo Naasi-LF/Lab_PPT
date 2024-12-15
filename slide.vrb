@@ -1,0 +1,42 @@
+\frametitle{后端接口三：智能分析集成}
+\begin{columns}
+        \column{0.4\textwidth}
+        \textbf{接口说明:}
+        \begin{itemize}
+            \item 路由: \texttt{/api/analyze}
+            \item 方法: \texttt{POST}
+            \item 功能: 模型预测 + GPT分析
+        \end{itemize}
+        \vspace{0.2cm}
+        \textbf{创新设计:}
+        \begin{enumerate}
+            \item 模型预测结果(情感/主题)作为GPT输入
+            \item 定制化prompt引导分析
+            \item 结构化输出集成
+        \end{enumerate}
+
+        \column{0.6\textwidth}
+        \begin{tikzpicture}[font=\small]
+            \tikzstyle{entity} = [draw, rectangle, minimum height=1em]
+
+            % 定义实体
+            \node[entity] (front) at (0,4) {前端};
+            \node[entity] (api) at (2,4) {API};
+            \node[entity] (models) at (4,4) {模型(double)};
+            \node[entity] (gpt) at (6,4) {GPT};
+
+            % 绘制生命线
+            \draw[dashed] (front) -- (0,0);
+            \draw[dashed] (api) -- (2,0);
+            \draw[dashed] (models) -- (4,0);
+            \draw[dashed] (gpt) -- (6,0);
+
+            % 绘制消息
+            \draw[->] (0,3.5) -- (2,3.5) node[midway,above] {文本};
+            \draw[->] (2,3) -- (4,3) node[midway,above] {预测请求};
+            \draw[->] (4,2.5) -- (2,2) node[midway,above] {预测结果};
+            \draw[->] (2,1.5) -- (6,1.5) node[midway,above] {构建prompt};
+            \draw[->] (6,1) -- (2,1) node[midway,above] {分析结果};
+            \draw[->] (2,0.5) -- (0,0.5) node[midway,above] {JSON响应};
+        \end{tikzpicture}
+    \end{columns}
